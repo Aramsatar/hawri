@@ -64,14 +64,14 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const CircleAvatar(
                     radius: 24,
-                    backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=5'), // Placeholder
+                    backgroundImage: AssetImage('assets/images/profile picture.jpeg'),
                   ),
                   const SizedBox(width: 12),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Test Name',
+                        'Aram Satar',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

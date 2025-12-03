@@ -66,10 +66,6 @@ class LearningScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const CircleAvatar(
-                        radius: 24,
-                        backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=5'),
-                      ),
                     ],
                   ),
 
