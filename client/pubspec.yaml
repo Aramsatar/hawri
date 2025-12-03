@@ -79,6 +79,7 @@ flutter:
     - assets/lottie/
     - assets/componets svg vertor/
     - assets/images/
+    - assets/images/foods/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

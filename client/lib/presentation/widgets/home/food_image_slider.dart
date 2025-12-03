@@ -19,32 +19,32 @@ class _FoodImageSliderState extends State<FoodImageSlider> {
   // Start at a large number to allow scrolling left immediately
   final int _initialPage = 5000;
 
-  // Placeholder data for now
+  // Local assets from assets/images/foods/
   final List<Map<String, String>> _foodItems = [
     {
-      'image': 'https://picsum.photos/id/1084/600/800', // Walrus? No, let's hope for food-ish or generic
-      'title': 'Agean Breeze Salad',
-      'time': '20 min',
-    },
-    {
-      'image': 'https://picsum.photos/id/1060/600/800', // Coffee/Barista
-      'title': 'Dolma Special',
+      'image': 'assets/images/foods/photo_1_2025-12-03_19-44-47.jpg',
+      'title': 'Gourmet Steak',
       'time': '45 min',
     },
     {
-      'image': 'https://picsum.photos/id/102/600/800', // Raspberries
-      'title': 'Berry Delight',
+      'image': 'assets/images/foods/photo_2_2025-12-03_19-44-47.jpg',
+      'title': 'Fresh Salad',
       'time': '15 min',
     },
     {
-      'image': 'https://picsum.photos/id/225/600/800', // Tea
-      'title': 'Morning Tea',
+      'image': 'assets/images/foods/photo_3_2025-12-03_19-44-47.jpg',
+      'title': 'Berry Smoothie',
       'time': '10 min',
     },
     {
-      'image': 'https://picsum.photos/id/292/600/800', // Spices
-      'title': 'Spicy Noodles',
+      'image': 'assets/images/foods/photo_4_2025-12-03_19-44-47.jpg',
+      'title': 'Pasta Delight',
       'time': '30 min',
+    },
+    {
+      'image': 'assets/images/foods/photo_5_2025-12-03_19-44-47.jpg',
+      'title': 'Morning Coffee',
+      'time': '5 min',
     },
   ];
 
@@ -124,16 +124,9 @@ class _FoodImageSliderState extends State<FoodImageSlider> {
                   children: [
                     // Image
                     Positioned.fill(
-                      child: Image.network(
+                      child: Image.asset(
                         item['image']!,
                         fit: BoxFit.cover,
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return Container(
-                            color: Colors.grey[200],
-                            child: const Center(child: CircularProgressIndicator()),
-                          );
-                        },
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
                             color: Colors.grey[300],
