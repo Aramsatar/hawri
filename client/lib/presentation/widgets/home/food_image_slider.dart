@@ -22,29 +22,29 @@ class _FoodImageSliderState extends State<FoodImageSlider> {
   // Local assets from assets/images/foods/
   final List<Map<String, String>> _foodItems = [
     {
-      'image': 'assets/images/foods/photo_1_2025-12-03_19-44-47.jpg',
-      'title': 'Gourmet Steak',
+      'image': 'assets/images/foods/photo_7_2025-12-03_19-44-47.jpg',
+      'title': 'Kuba',
       'time': '45 min',
     },
     {
-      'image': 'assets/images/foods/photo_2_2025-12-03_19-44-47.jpg',
-      'title': 'Fresh Salad',
-      'time': '15 min',
+      'image': 'assets/images/foods/photo_6_2025-12-03_19-44-47.jpg',
+      'title': 'Kabab',
+      'time': '45 min',
     },
     {
-      'image': 'assets/images/foods/photo_3_2025-12-03_19-44-47.jpg',
-      'title': 'Berry Smoothie',
-      'time': '10 min',
+      'image': 'assets/images/foods/photo_9_2025-12-03_19-44-47.jpg',
+      'title': 'Doghawa',
+      'time': '45 min',
     },
     {
-      'image': 'assets/images/foods/photo_4_2025-12-03_19-44-47.jpg',
-      'title': 'Pasta Delight',
-      'time': '30 min',
+      'image': 'assets/images/foods/photo_11_2025-12-03_19-44-47.jpg',
+      'title': 'Dolma',
+      'time': '45 min',
     },
     {
-      'image': 'assets/images/foods/photo_5_2025-12-03_19-44-47.jpg',
-      'title': 'Morning Coffee',
-      'time': '5 min',
+      'image': 'assets/images/foods/photo_15_2025-12-03_19-44-47.jpg',
+      'title': 'Tashreb',
+      'time': '45 min',
     },
   ];
 
