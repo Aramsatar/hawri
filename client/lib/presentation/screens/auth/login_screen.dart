@@ -154,13 +154,13 @@ class LoginScreen extends StatelessWidget {
                     
                     // Social Login Buttons
                     _SocialLoginButton(
-                      icon: 'assets/icons/Google.svg',
+                      icon: 'assets/icons/settings page icon/Google.svg',
                       label: 'Continue with Google',
                       onPressed: () {},
                     ),
                     const SizedBox(height: 12),
                     _SocialLoginButton(
-                      icon: 'assets/icons/Facebook.svg',
+                      icon: 'assets/icons/settings page icon/Facebook.svg',
                       label: 'Continue with Facebook',
                       onPressed: () {},
                       iconColor: const Color(0xFF1877F2), // Facebook Blue
