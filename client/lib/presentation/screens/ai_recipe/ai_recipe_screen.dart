@@ -11,18 +11,12 @@ class AiRecipeScreen extends StatelessWidget {
       body: Stack(
         children: [
           // Top Right Pattern
-          Positioned(
-            top: -50,
-            right: -50,
-            child: SvgPicture.asset(
-              'assets/componets svg vertor/five.svg',
-              width: 150,
-              height: 150,
-            ),
-          ),
+          
           
           SafeArea(
-            child: Padding(
+          left: false,
+          right: false,
+          child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
