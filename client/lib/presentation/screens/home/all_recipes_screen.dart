@@ -1,108 +1,158 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../widgets/home/recipe_card.dart';
 
 class AllRecipesScreen extends StatelessWidget {
   const AllRecipesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> categories = [
-      {'title': 'Airfryer', 'image': 'https://picsum.photos/id/1080/200/200'},
-      {'title': 'Dinner', 'image': 'https://picsum.photos/id/1060/200/200'},
-      {'title': 'Snacks', 'image': 'https://picsum.photos/id/1070/200/200'},
-      {'title': 'Legumes', 'image': 'https://picsum.photos/id/1084/200/200'},
-      {'title': 'Fish', 'image': 'https://picsum.photos/id/102/200/200'},
-      {'title': 'Baby Food', 'image': 'https://picsum.photos/id/225/200/200'},
-      {'title': 'Pastry', 'image': 'https://picsum.photos/id/292/200/200'},
-      {'title': 'Desserts', 'image': 'https://picsum.photos/id/1062/200/200'},
-      {'title': 'Kids', 'image': 'https://picsum.photos/id/1069/200/200'},
-      {'title': 'Soup', 'image': 'https://picsum.photos/id/1080/200/200'},
-      {'title': 'Baking', 'image': 'https://picsum.photos/id/1060/200/200'},
-      {'title': 'Seafood', 'image': 'https://picsum.photos/id/1070/200/200'},
-      {'title': 'Diet', 'image': 'https://picsum.photos/id/1084/200/200'},
-      {'title': 'Healthy', 'image': 'https://picsum.photos/id/102/200/200'},
-      {'title': 'Dolma', 'image': 'https://picsum.photos/id/225/200/200'},
-      {'title': 'Ice Cream', 'image': 'https://picsum.photos/id/292/200/200'},
-      {'title': 'World', 'image': 'https://picsum.photos/id/1062/200/200'},
-      {'title': 'Bread', 'image': 'https://picsum.photos/id/1069/200/200'},
+    // Mock data for recipes
+    final List<Map<String, dynamic>> recipes = [
+      {
+        'title': 'Classic Margherita Pizza',
+        'image': 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=500&q=80',
+        'time': '45 min',
+        'likes': 342,
+        'author': 'Chef Mario',
+        'authorImage': 'https://i.pravatar.cc/150?img=11',
+      },
+      {
+        'title': 'Creamy Mushroom Risotto',
+        'image': 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=500&q=80',
+        'time': '30 min',
+        'likes': 521,
+        'author': 'Sarah Cook',
+        'authorImage': 'https://i.pravatar.cc/150?img=5',
+      },
+      {
+        'title': 'Grilled Salmon with Asparagus',
+        'image': 'https://images.unsplash.com/photo-1467003909585-2f8a7270028d?auto=format&fit=crop&w=500&q=80',
+        'time': '25 min',
+        'likes': 890,
+        'author': 'Gordon R.',
+        'authorImage': 'https://i.pravatar.cc/150?img=3',
+      },
+      {
+        'title': 'Berry Smoothie Bowl',
+        'image': 'https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=500&q=80',
+        'time': '10 min',
+        'likes': 120,
+        'author': 'Healthy Life',
+        'authorImage': 'https://i.pravatar.cc/150?img=9',
+      },
+      {
+        'title': 'Homemade Burger',
+        'image': 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80',
+        'time': '40 min',
+        'likes': 654,
+        'author': 'Burger King',
+        'authorImage': 'https://i.pravatar.cc/150?img=12',
+      },
+      {
+        'title': 'Chocolate Lava Cake',
+        'image': 'https://images.unsplash.com/photo-1606313564200-e75d5e30476d?auto=format&fit=crop&w=500&q=80',
+        'time': '50 min',
+        'likes': 999,
+        'author': 'Sweet Tooth',
+        'authorImage': 'https://i.pravatar.cc/150?img=10',
+      },
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFF121212), // Dark background
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF121212),
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          decoration: BoxDecoration(
-            color: const Color(0xFF1E1E1E),
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: const Row(
-            children: [
-              Icon(Icons.search, color: Colors.grey, size: 20),
-              SizedBox(width: 8),
-              Text(
-                'Search in categories',
-                style: TextStyle(color: Colors.grey, fontSize: 14),
-              ),
-            ],
-          ),
-        ),
-      ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(16),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 0.8,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-        ),
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          final category = categories[index];
-          return Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          // Top Left Pattern
+          Positioned(
+            top: -50,
+            left: -65,
+            child: SvgPicture.asset(
+              'assets/componets svg vertor/forth.svg',
+              width: 131,
+              height: 131,
             ),
+          ),
+          
+          // Top Right Pattern (Red, Rotated)
+          Positioned(
+            top: 100,
+            right: -65,
+            child: Transform.rotate(
+              angle: 3.14159, // 180 degrees
+              child: SvgPicture.asset(
+                'assets/componets svg vertor/forth.svg',
+                width: 131,
+                height: 131,
+              ),
+            ),
+          ),
+
+          SafeArea(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Header
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    category['title']!,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
+                  padding: const EdgeInsets.all(24.0),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Icon(Icons.arrow_back_ios_new, size: 20, color: Colors.black),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Text(
+                        'All Recipes',
+                        style: GoogleFonts.outfit(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+
+                // Recipe Grid
                 Expanded(
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
-                    child: Image.network(
-                      category['image']!,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      errorBuilder: (context, error, stackTrace) => Container(
-                        color: Colors.grey[300],
-                        child: const Icon(Icons.fastfood, color: Colors.grey),
-                      ),
+                  child: GridView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.6, // Adjusted for RecipeCard height
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 24,
                     ),
+                    itemCount: recipes.length,
+                    itemBuilder: (context, index) {
+                      final recipe = recipes[index];
+                      return SizedBox(
+                        // Wrap in SizedBox to constrain width if needed, though Grid handles it
+                        child: RecipeCard(
+                          imageUrl: recipe['image'],
+                          title: recipe['title'],
+                          time: recipe['time'],
+                          likes: recipe['likes'],
+                          authorName: recipe['author'],
+                          authorImage: recipe['authorImage'],
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }

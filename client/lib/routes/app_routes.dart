@@ -7,6 +7,7 @@ import '../presentation/screens/auth/register_screen.dart';
 import '../presentation/screens/home/home_screen.dart';
 import '../presentation/screens/ai_recipe/ai_recipe_screen.dart';
 import '../presentation/screens/learning/learning_screen.dart';
+import '../presentation/screens/profile/profile_screen.dart';
 import '../presentation/widgets/common/main_wrapper.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -49,6 +50,10 @@ final router = GoRouter(
         GoRoute(
           path: '/learning',
           builder: (context, state) => const LearningScreen(),
+        ),
+        GoRoute(
+          path: '/profile',
+          builder: (context, state) => const ProfileScreen(),
         ),
       ],
     ),

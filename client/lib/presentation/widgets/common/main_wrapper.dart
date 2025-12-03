@@ -74,8 +74,8 @@ class MainWrapper extends StatelessWidget {
                     ),
                     _NavBarItem(
                       icon: Icons.person_outline,
-                      isSelected: false, 
-                      onTap: () {},
+                      isSelected: GoRouterState.of(context).uri.toString() == '/profile', 
+                      onTap: () => context.go('/profile'),
                     ),
                   ],
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AuthorCard extends StatelessWidget {
   final String name;
@@ -38,7 +39,7 @@ class AuthorCard extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 14,
@@ -48,7 +49,7 @@ class AuthorCard extends StatelessWidget {
           Text(
             '$followers followers • $recipes recipes',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: GoogleFonts.poppins(
               color: Colors.grey[400],
               fontSize: 10,
             ),
@@ -66,7 +67,7 @@ class AuthorCard extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 8),
               ),
-              child: const Text('Follow', style: TextStyle(fontSize: 12)),
+              child: Text('Follow', style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600)),
             ),
           ),
         ],
