@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../widgets/home/food_image_slider.dart';
+import '../../widgets/home/recipe_card.dart';
+import '../../widgets/home/author_card.dart';
+import 'all_recipes_screen.dart';
+import 'all_authors_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -262,6 +266,122 @@ class HomeScreen extends StatelessWidget {
               // Featured Item Slider
               const FoodImageSlider().animate().fadeIn().scale(),
 
+              const SizedBox(height: 32),
+
+              // Popular Recipes Section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Popular Recipes',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AllRecipesScreen()),
+                      );
+                    },
+                    child: const Text(
+                      'See All',
+                      style: TextStyle(color: Color(0xFFFF2B5E)),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 280,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: const [
+                    RecipeCard(
+                      imageUrl: 'https://picsum.photos/id/1080/400/400',
+                      title: 'Strawberry Cream Cake',
+                      time: '45 min',
+                      likes: 342,
+                      authorName: 'Sarah Baker',
+                      authorImage: 'https://i.pravatar.cc/150?img=1',
+                    ),
+                    RecipeCard(
+                      imageUrl: 'https://picsum.photos/id/1060/400/400',
+                      title: 'Homemade Barista Coffee',
+                      time: '10 min',
+                      likes: 128,
+                      authorName: 'Mike Brewer',
+                      authorImage: 'https://i.pravatar.cc/150?img=2',
+                    ),
+                    RecipeCard(
+                      imageUrl: 'https://picsum.photos/id/1070/400/400',
+                      title: 'Spicy Vegetable Curry',
+                      time: '35 min',
+                      likes: 89,
+                      authorName: 'Emma Cook',
+                      authorImage: 'https://i.pravatar.cc/150?img=3',
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 32),
+
+              // Popular Authors Section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Popular Authors',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AllAuthorsScreen()),
+                      );
+                    },
+                    child: const Text(
+                      'See All',
+                      style: TextStyle(color: Color(0xFFFF2B5E)),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 220,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: const [
+                    AuthorCard(
+                      name: 'Ferhat Bora',
+                      imageUrl: 'https://i.pravatar.cc/150?img=11',
+                      followers: '156k',
+                      recipes: '1,112',
+                    ),
+                    AuthorCard(
+                      name: 'Yasemin Gürsürer',
+                      imageUrl: 'https://i.pravatar.cc/150?img=5',
+                      followers: '269k',
+                      recipes: '1,159',
+                    ),
+                    AuthorCard(
+                      name: 'Çigdem Esastürk',
+                      imageUrl: 'https://i.pravatar.cc/150?img=9',
+                      followers: '17k',
+                      recipes: '450',
+                    ),
+                  ],
+                ),
+              ),
+              
               const SizedBox(height: 24),
 
               // Another Item (Dolma)

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class MainWrapper extends StatelessWidget {
@@ -13,62 +12,55 @@ class MainWrapper extends StatelessWidget {
       body: navigationShell,
       extendBody: true,
       bottomNavigationBar: Container(
-        margin: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        margin: const EdgeInsets.fromLTRB(24, 0, 24, 34),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
-          color: const Color(0xFF2C3E50), // Dark background
-          borderRadius: BorderRadius.circular(32),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.2),
-              blurRadius: 20,
-              offset: const Offset(0, 10),
-            ),
-          ],
+          color: const Color(0xFFB0B0B0), // Grey background from image
+          borderRadius: BorderRadius.circular(50), // Capsule shape
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _NavBarItem(
-              iconPath: 'assets/icons/navbar icon/home.svg',
+              icon: Icons.home_outlined,
               isSelected: GoRouterState.of(context).uri.toString() == '/home',
               onTap: () => context.go('/home'),
             ),
             _NavBarItem(
-              // Using home as placeholder for discovery if needed, or check for discovery icon
-              // Wait, ls showed 'home.svg' in navbar icon. I don't see 'discovery.svg'.
-              // I'll use 'home.svg' for now or maybe 'search.svg' from appbar icon if appropriate?
-              // User said "check the assets folder".
-              // I see 'search.svg' in 'appbar icon'.
-              // I see 'profile.svg' in 'icons' root? No, 'profile.svg' was in root.
-              // Let's use what I saw in ls:
-              // assets/icons/navbar icon/home.svg
-              // assets/icons/profile.svg
-              // assets/icons/settings page icon/notification.svg
-              // assets/icons/appbar icon/search.svg
-              // I'll use 'search.svg' for Explore/Discovery for now.
-              iconPath: 'assets/icons/appbar icon/search.svg', 
+              icon: Icons.tonality, // Circle with half filled (matches image)
               isSelected: GoRouterState.of(context).uri.toString() == '/learning',
               onTap: () => context.go('/learning'),
             ),
             GestureDetector(
               onTap: () => context.go('/ai-recipe'),
               child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
+                width: 60,
+                height: 60,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF000000), Color(0xFFD32F2F)], // Black to Red
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
                   shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x4D000000),
+                      blurRadius: 10,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
                 ),
-                child: const Icon(Icons.add, color: Colors.white),
+                child: const Icon(Icons.star_outline, color: Colors.white, size: 32), // 4-pointed star look
               ),
             ),
             _NavBarItem(
-              iconPath: 'assets/icons/settings page icon/Group 1.svg', // Placeholder for chart/stats
+              icon: Icons.bar_chart_outlined, // Stats
               isSelected: false, 
               onTap: () {},
             ),
             _NavBarItem(
-              iconPath: 'assets/icons/profile.svg',
+              icon: Icons.person_outline, // Profile
               isSelected: false, 
               onTap: () {},
             ),
@@ -80,12 +72,12 @@ class MainWrapper extends StatelessWidget {
 }
 
 class _NavBarItem extends StatelessWidget {
-  final String iconPath;
+  final IconData icon;
   final bool isSelected;
   final VoidCallback onTap;
 
   const _NavBarItem({
-    required this.iconPath,
+    required this.icon,
     required this.isSelected,
     required this.onTap,
   });
@@ -94,14 +86,13 @@ class _NavBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: SvgPicture.asset(
-        iconPath,
-        colorFilter: ColorFilter.mode(
-          isSelected ? Colors.white : Colors.grey,
-          BlendMode.srcIn,
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        child: Icon(
+          icon,
+          color: Colors.white, // Icons are white in the image
+          size: 28,
         ),
-        width: 24,
-        height: 24,
       ),
     );
   }

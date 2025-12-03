@@ -66,8 +66,11 @@ class _FoodImageSliderState extends State<FoodImageSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final sliderHeight = (screenHeight * 0.45).clamp(300.0, 500.0);
+
     return SizedBox(
-      height: 400, // Increased height
+      height: sliderHeight,
       width: double.infinity,
       child: PageView.builder(
         scrollDirection: widget.scrollDirection,
@@ -97,7 +100,7 @@ class _FoodImageSliderState extends State<FoodImageSlider> {
               final curveValue = Curves.easeOut.transform(value);
               return Center(
                 child: SizedBox(
-                  height: curveValue * 400,
+                  height: curveValue * sliderHeight,
                   width: curveValue * 350,
                   child: child,
                 ),
